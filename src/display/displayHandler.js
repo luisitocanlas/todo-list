@@ -20,11 +20,15 @@ function renderTodos(container) {
 		const todoElement = document.createElement('div');
 		todoElement.className = 'card';
 		todoElement.innerHTML = `
-          <h3>${todo.title}</h3>
-          <p>${todo.description}</p>
-          <p>Priority: ${todo.priority}</p>
-          <p>Due Date: ${todo.dueDate || 'No due date'}</p>
-      `;
+            <h3>${todo.title}</h3>
+            <p>${todo.description}</p>
+            <p>Priority: ${todo.priority}</p>
+            <p>Due Date: ${todo.dueDate || 'No due date'}</p>
+            <label>
+                <input type="checkbox" ${todo.isCompleted ? 'checked' : ''}>
+                Completed
+            </label>
+        `;
 		todoContainer.appendChild(todoElement);
 	});
 
