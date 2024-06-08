@@ -51,13 +51,39 @@ header nav button:hover {
 
 /* Main section styling */
 main {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
 	background-color: white;
 	width: 100%;
-	max-width: 800px;
+	max-width: 1200px;
 	padding: 20px;
+	margin: 20px auto;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	margin: 20px 0;
-	justify-self: center;
+	align-content: flex-start;
+	justify-content: center;
+}
+
+/* Card styling */
+.card {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	width: 250px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Project item styling */
+.project-card {
+	background-color: #f0f8ff; /* Light blue background for differentiation */
 }
 
 /* Footer styling */
