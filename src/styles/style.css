@@ -20,10 +20,13 @@ body {
 header {
 	background-color: #4a90e2; /* Soft blue */
 	color: white;
-	padding: 20px;
+	padding: 20px 0px;
 	width: 100%;
 	text-align: center;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 header h1 {
@@ -31,7 +34,9 @@ header h1 {
 }
 
 header nav {
-	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	gap: 10px; /* Add space between buttons */
 }
 
 header nav button {
@@ -42,6 +47,7 @@ header nav button {
 	padding: 10px 20px;
 	margin: 5px;
 	cursor: pointer;
+	width: 150px;
 }
 
 header nav button:hover {
@@ -110,7 +116,7 @@ main {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	padding: 20px;
 	width: 250px;
-	height: 150px;
+	height: 180px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -126,6 +132,11 @@ main {
 	margin-top: 10px;
 }
 
+/* Select dropdown styling */
+.card select {
+	margin: 5px 5px;
+}
+
 .card input[type='checkbox'] {
 	margin-right: 5px;
 }
@@ -133,6 +144,12 @@ main {
 /* Project item styling */
 .project-card {
 	background-color: #f0f8ff; /* Light blue background for differentiation */
+}
+
+/* Remove dots from list items in project cards */
+.card ul {
+	list-style-type: none;
+	padding-left: 0; /* Remove any padding */
 }
 
 /* Footer styling */
