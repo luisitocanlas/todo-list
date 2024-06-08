@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	// for testing purposes
 	generateData();
 
+	// Render todos initially when the page loads
+	renderTodos(mainContainer);
+
 	todoBtn.addEventListener('click', () => renderTodos(mainContainer));
 	projectsBtn.addEventListener('click', () => renderProjects(mainContainer));
 });
