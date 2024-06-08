@@ -22,7 +22,20 @@ function renderTodos(container) {
 		todoElement.innerHTML = `
             <h3>${todo.title}</h3>
             <p>${todo.description}</p>
-            <p>Priority: ${todo.priority}</p>
+            <label>
+                Priority:
+                <select>
+                    <option value="Low" ${
+											todo.priority === 'Low' ? 'selected' : ''
+										}>Low</option>
+                    <option value="Medium" ${
+											todo.priority === 'Medium' ? 'selected' : ''
+										}>Medium</option>
+                    <option value="High" ${
+											todo.priority === 'High' ? 'selected' : ''
+										}>High</option>
+                </select>
+            </label>
             <p>Due Date: ${todo.dueDate || 'No due date'}</p>
             <label>
                 <input type="checkbox" ${todo.isCompleted ? 'checked' : ''}>
