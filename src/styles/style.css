@@ -52,17 +52,54 @@ header nav button:hover {
 /* Main section styling */
 main {
 	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 	background-color: white;
 	width: 100%;
 	max-width: 1200px;
 	padding: 20px;
 	margin: 20px auto;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	align-content: flex-start;
+}
+
+/* Button container styling */
+.button-container {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.button-container button {
+	background-color: #4a90e2;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+.button-container button:hover {
+	background-color: #357abd;
+}
+
+/* Todo container styling */
+.todo-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
 	justify-content: center;
+	align-content: flex-start;
+	width: 100%;
+}
+
+/* Project container styling */
+.project-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+	align-content: flex-start;
+	width: 100%;
 }
 
 /* Card styling */
