@@ -37,8 +37,18 @@ function generateData() {
 		'Medium'
 	);
 
+	dataHandler.createTodoItem(
+		'Generic Todo 3',
+		'Description for Todo 3',
+		'2024-11-30',
+		'Medium'
+	);
+
 	// Create a generic Project with three TodoItems
-	const project = dataHandler.createProject('Generic Project');
+	const project1 = dataHandler.createProject('Generic Project1');
+	const project2 = dataHandler.createProject('Generic Project2');
+	const project3 = dataHandler.createProject('Generic Project3');
+
 	const projectTodo1 = dataHandler.createTodoItem(
 		'Project Todo 1',
 		'Description for Project Todo 1',
@@ -60,7 +70,15 @@ function generateData() {
 		'High'
 	);
 
-	dataHandler.addTodoItemToProject(project.title, projectTodo1);
-	dataHandler.addTodoItemToProject(project.title, projectTodo2);
-	dataHandler.addTodoItemToProject(project.title, projectTodo3);
+	dataHandler.addTodoItemToProject(project1.title, projectTodo1);
+	dataHandler.addTodoItemToProject(project1.title, projectTodo2);
+	dataHandler.addTodoItemToProject(project1.title, projectTodo3);
+
+	dataHandler.addTodoItemToProject(project2.title, projectTodo1);
+	dataHandler.addTodoItemToProject(project2.title, projectTodo2);
+	dataHandler.addTodoItemToProject(project2.title, projectTodo3);
+
+	dataHandler.addTodoItemToProject(project3.title, projectTodo1);
+	dataHandler.addTodoItemToProject(project3.title, projectTodo2);
+	dataHandler.addTodoItemToProject(project3.title, projectTodo3);
 }
