@@ -88,6 +88,12 @@ main {
 	background-color: #357abd;
 }
 
+/* Project name styling */
+.project-name {
+	font-size: 1.5em;
+	margin-bottom: 20px;
+}
+
 /* Todo container styling */
 .todo-container {
 	display: flex;

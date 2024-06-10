@@ -5,6 +5,10 @@ class DataHandler {
 	constructor() {
 		this.todoItems = [];
 		this.projects = [];
+
+		// Create default project
+		this.defaultProject = new Project('Default Project');
+		this.projects.push(this.defaultProject);
 	}
 
 	createTodoItem(title, description, dueDate, priority) {
@@ -15,6 +19,10 @@ class DataHandler {
 
 	getTodoItems() {
 		return this.todoItems;
+	}
+
+	getDefaultProject() {
+		return this.defaultProject;
 	}
 
 	createProject(title) {

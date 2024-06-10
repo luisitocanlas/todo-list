@@ -13,13 +13,28 @@ document.addEventListener('DOMContentLoaded', () => {
 	const projectsBtn = document.querySelector('#projects-button');
 	const mainContainer = document.querySelector('main');
 
-	// for testing purposes
-	generateData();
+	// Create some default todo items in the default project
+	const defaultProject = dataHandler.getDefaultProject();
+	dataHandler.createTodoItem(
+		'Default Todo 1',
+		'Description for Default Todo 1',
+		'2024-12-31',
+		'High'
+	);
+	dataHandler.createTodoItem(
+		'Default Todo 2',
+		'Description for Default Todo 2',
+		'2024-11-30',
+		'Medium'
+	);
 
-	// Render todos initially when the page loads
-	renderTodos(mainContainer);
+	// Render the default project's todos initially when the page loads
+	renderTodos(mainContainer, defaultProject);
 
-	todoBtn.addEventListener('click', () => renderTodos(mainContainer));
+	// Set up event listeners
+	todoBtn.addEventListener('click', () =>
+		renderTodos(mainContainer, defaultProject)
+	);
 	projectsBtn.addEventListener('click', () => renderProjects(mainContainer));
 });
 

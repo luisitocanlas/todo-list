@@ -1,6 +1,6 @@
 import dataHandler from '../data/dataHandler';
 
-function renderTodos(container) {
+function renderTodos(container, project) {
 	container.innerHTML = '';
 
 	// Create a div for the "Add New Todo Item" button
@@ -9,6 +9,11 @@ function renderTodos(container) {
 	const addButton = document.createElement('button');
 	addButton.textContent = 'Add New Todo Item';
 	buttonDiv.appendChild(addButton);
+
+	// Create a div to contain the project name
+	const projectNameDiv = document.createElement('div');
+	projectNameDiv.className = 'project-name';
+	projectNameDiv.textContent = `Project: ${project.title}`;
 
 	// Create a div to contain the todo items
 	const todoContainer = document.createElement('div');
@@ -47,6 +52,7 @@ function renderTodos(container) {
 
 	// Append the buttonDiv and todoContainer to the main container
 	container.appendChild(buttonDiv);
+	container.appendChild(projectNameDiv);
 	container.appendChild(todoContainer);
 }
 
@@ -82,6 +88,9 @@ function renderProjects(container) {
 		});
 
 		projectElement.appendChild(todoList);
+		projectElement.addEventListener('click', () =>
+			renderTodos(container, project)
+		);
 		projectContainer.appendChild(projectElement);
 	});
 
