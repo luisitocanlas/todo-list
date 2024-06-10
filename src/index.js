@@ -36,6 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		renderTodos(mainContainer, defaultProject)
 	);
 	projectsBtn.addEventListener('click', () => renderProjects(mainContainer));
+
+	// Event listener for "Add New Todo Item" button
+	mainContainer.addEventListener('click', (event) => {
+		if (event.target.id === 'add-todo-button') {
+			alert('You are about to create a new todo item');
+		} else if (event.target.id === 'add-project-button') {
+			alert('You are about to create a new todo item');
+		}
+	});
 });
 
 // for testing purposes

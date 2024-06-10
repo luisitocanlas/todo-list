@@ -8,6 +8,7 @@ function renderTodos(container, project) {
 	buttonDiv.className = 'button-container';
 	const addButton = document.createElement('button');
 	addButton.textContent = 'Add New Todo Item';
+	addButton.id = 'add-todo-button';
 	buttonDiv.appendChild(addButton);
 
 	// Create a div to contain the project name
@@ -64,6 +65,7 @@ function renderProjects(container) {
 	buttonDiv.className = 'button-container';
 	const addButton = document.createElement('button');
 	addButton.textContent = 'Add New Project';
+	addButton.id = 'add-project-button';
 	buttonDiv.appendChild(addButton);
 
 	// Create a div to contain the projects
