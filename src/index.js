@@ -36,22 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Set up event listeners
 	todoBtn.addEventListener('click', () =>
-		renderTodos(mainContainer, defaultProject)
+		renderTodos(mainContainer, currentProject)
 	);
 	projectsBtn.addEventListener('click', () => renderProjects(mainContainer));
 
-	// Event listener for "Add New Todo Item" button
+	// Event listener for main container clicks
 	mainContainer.addEventListener('click', (event) => {
-		if (event.target.id === 'add-todo-button') {
-			alert('You are about to create a new todo item');
-		} else if (event.target.id === 'add-project-button') {
-			alert('You are about to create a new todo item');
-		}
-	});
+		const { id, classList } = event.target;
 
-	// Update current project when a project is selected
-	mainContainer.addEventListener('click', (event) => {
-		if (event.target.classList.contains('project-card')) {
+		if (id === 'add-todo-button') {
+			handleAddNewTodo();
+		} else if (id === 'add-project-button') {
+			handleAddNewProject();
+		} else if (classList.contains('project-card')) {
 			const projectTitle = event.target.querySelector('h3').textContent;
 			currentProject = dataHandler
 				.getProjects()
@@ -60,6 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 });
+
+// Function to handle adding a new todo item
+function handleAddNewTodo() {
+	alert('You are about to create a new todo item');
+	// Future logic for adding a new todo item will go here
+}
+
+// Function to handle adding a new project
+function handleAddNewProject() {
+	alert('You are about to create a new project');
+	// Future logic for adding a new project will go here
+}
 
 // for testing purposes
 function generateData() {
