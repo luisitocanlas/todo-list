@@ -1,6 +1,11 @@
 import './styles/style.css';
 import { renderTodos, renderProjects } from './display/displayHandler';
 import dataHandler from './data/dataHandler';
+import {
+	createTodoModal,
+	showModal,
+	setupModalHandlers,
+} from './display/modalHandler';
 
 if (process.env.NODE_ENV !== 'production') {
 	console.log('Looks like we are in development mode!');
@@ -13,20 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const projectsBtn = document.querySelector('#projects-button');
 	const mainContainer = document.querySelector('main');
 
+	// Create the modal for adding a new todo item
+	createTodoModal();
+
 	// Create some default todo items in the default project
 	const defaultProject = dataHandler.getDefaultProject();
-	dataHandler.createTodoItem(
-		'Default Todo 1',
-		'Description for Default Todo 1',
-		'2024-12-31',
-		'High'
-	);
-	dataHandler.createTodoItem(
-		'Default Todo 2',
-		'Description for Default Todo 2',
-		'2024-11-30',
-		'Medium'
-	);
 
 	// Variable to track the current project
 	let currentProject = defaultProject;
@@ -40,12 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	);
 	projectsBtn.addEventListener('click', () => renderProjects(mainContainer));
 
+	// Set up modal handlers with current project context
+	setupModalHandlers(currentProject, renderTodos, mainContainer);
+
 	// Event listener for main container clicks
 	mainContainer.addEventListener('click', (event) => {
 		const { id, classList } = event.target;
 
 		if (id === 'add-todo-button') {
-			handleAddNewTodo();
+			showModal();
 		} else if (id === 'add-project-button') {
 			handleAddNewProject();
 		} else if (classList.contains('project-card')) {
@@ -57,12 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 });
-
-// Function to handle adding a new todo item
-function handleAddNewTodo() {
-	alert('You are about to create a new todo item');
-	// Future logic for adding a new todo item will go here
-}
 
 // Function to handle adding a new project
 function handleAddNewProject() {
