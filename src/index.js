@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		'Medium'
 	);
 
+	// Variable to track the current project
+	let currentProject = defaultProject;
+
 	// Render the default project's todos initially when the page loads
 	renderTodos(mainContainer, defaultProject);
 
@@ -43,6 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
 			alert('You are about to create a new todo item');
 		} else if (event.target.id === 'add-project-button') {
 			alert('You are about to create a new todo item');
+		}
+	});
+
+	// Update current project when a project is selected
+	mainContainer.addEventListener('click', (event) => {
+		if (event.target.classList.contains('project-card')) {
+			const projectTitle = event.target.querySelector('h3').textContent;
+			currentProject = dataHandler
+				.getProjects()
+				.find((project) => project.title === projectTitle);
+			renderTodos(mainContainer, currentProject);
 		}
 	});
 });
