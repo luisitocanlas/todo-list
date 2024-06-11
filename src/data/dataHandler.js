@@ -3,26 +3,15 @@ import Project from '../components/Project';
 
 class DataHandler {
 	constructor() {
-		this.todoItems = [];
 		this.projects = [];
 
 		// Create default project
-		this.defaultProject = new Project('Default Project');
+		this.defaultProject = new Project('Default');
 		this.projects.push(this.defaultProject);
 	}
 
 	createTodoItem(title, description, dueDate, priority) {
-		const newTodo = new TodoItem(title, description, dueDate, priority);
-		this.todoItems.push(newTodo);
-		return newTodo;
-	}
-
-	getTodoItems() {
-		return this.todoItems;
-	}
-
-	getDefaultProject() {
-		return this.defaultProject;
+		return new TodoItem(title, description, dueDate, priority);
 	}
 
 	createProject(title) {
@@ -31,12 +20,20 @@ class DataHandler {
 		return newProject;
 	}
 
+	getDefaultProject() {
+		return this.defaultProject;
+	}
+
 	getProjects() {
 		return this.projects;
 	}
 
+	getProjectByTitle(title) {
+		return this.projects.find((project) => project.title === title);
+	}
+
 	addTodoItemToProject(projectTitle, todoItem) {
-		const project = this.projects.find((p) => p.title === projectTitle);
+		const project = this.getProjectByTitle(projectTitle);
 		if (project) {
 			project.addTodoItem(todoItem);
 		}

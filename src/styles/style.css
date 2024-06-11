@@ -159,7 +159,8 @@ main {
 }
 
 /* Modal styling */
-#modal-overlay {
+#modal-overlay,
+#project-modal-overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -171,32 +172,39 @@ main {
 	align-items: center;
 }
 
-#modal {
+#modal,
+#project-modal {
 	background: white;
 	padding: 20px;
 	border-radius: 8px;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-#modal h2 {
+#modal h2,
+#project-modal h2 {
 	margin-top: 0;
 }
 
-#modal form {
+#modal form,
+#project-modal form {
 	display: flex;
 	flex-direction: column;
 }
 
-#modal label {
+#modal label,
+#project-modal label {
 	margin-top: 10px;
 }
 
 #modal input,
-#modal button {
+#modal button,
+#project-modal input,
+#project-modal button {
 	margin-top: 5px;
 }
 
-#modal button {
+#modal button,
+#project-modal button {
 	margin-top: 15px;
 }
 

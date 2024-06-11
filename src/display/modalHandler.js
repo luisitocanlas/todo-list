@@ -34,15 +34,36 @@ function createTodoModal() {
 	document.body.appendChild(modalOverlay);
 }
 
-function showModal() {
-	document.querySelector('#modal-overlay').style.display = 'flex';
+function createProjectModal() {
+	const modalOverlay = document.createElement('div');
+	modalOverlay.id = 'project-modal-overlay';
+
+	const modal = document.createElement('div');
+	modal.id = 'project-modal';
+	modal.innerHTML = `
+        <h2>Add New Project</h2>
+        <form id="project-form">
+            <label for="project-title">Project Title:</label>
+            <input type="text" id="project-title" name="project-title" required>
+            
+            <button type="submit">Add Project</button>
+            <button type="button" id="cancel-project-button">Cancel</button>
+        </form>
+    `;
+
+	modalOverlay.appendChild(modal);
+	document.body.appendChild(modalOverlay);
 }
 
-function hideModal() {
-	document.querySelector('#modal-overlay').style.display = 'none';
+function showModal(modalId) {
+	document.querySelector(`#${modalId}`).style.display = 'flex';
 }
 
-function setupModalHandlers(currentProject, renderTodos, mainContainer) {
+function hideModal(modalId) {
+	document.querySelector(`#${modalId}`).style.display = 'none';
+}
+
+function setupModalHandlers(uiHandler) {
 	document.querySelector('#todo-form').addEventListener('submit', (event) => {
 		event.preventDefault();
 
@@ -58,16 +79,47 @@ function setupModalHandlers(currentProject, renderTodos, mainContainer) {
 			priority
 		);
 
+		const currentProject = uiHandler.getCurrentProject();
 		dataHandler.addTodoItemToProject(currentProject.title, newTodo);
 
-		renderTodos(mainContainer, currentProject);
-		hideModal();
+		uiHandler.renderTodos(currentProject);
+		hideModal('modal-overlay');
 
 		// Clear form fields
 		event.target.reset();
 	});
 
-	document.querySelector('#cancel-button').addEventListener('click', hideModal);
+	document
+		.querySelector('#cancel-button')
+		.addEventListener('click', () => hideModal('modal-overlay'));
 }
 
-export { createTodoModal, showModal, setupModalHandlers };
+function setupProjectModalHandlers(uiHandler) {
+	document
+		.querySelector('#project-form')
+		.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const title = event.target['project-title'].value;
+
+			dataHandler.createProject(title);
+
+			uiHandler.renderProjects();
+			hideModal('project-modal-overlay');
+
+			// Clear form fields
+			event.target.reset();
+		});
+
+	document
+		.querySelector('#cancel-project-button')
+		.addEventListener('click', () => hideModal('project-modal-overlay'));
+}
+
+export {
+	createTodoModal,
+	createProjectModal,
+	showModal,
+	setupModalHandlers,
+	setupProjectModalHandlers,
+};

@@ -20,8 +20,8 @@ function renderTodos(container, project) {
 	const todoContainer = document.createElement('div');
 	todoContainer.className = 'todo-container';
 
-	// Get todo items and append them to the todoContainer
-	const todos = dataHandler.getTodoItems();
+	// Get todo items for the current project and append them to the todoContainer
+	const todos = project.getTodoItems();
 	todos.forEach((todo) => {
 		const todoElement = document.createElement('div');
 		todoElement.className = 'card';
