@@ -114,7 +114,9 @@ class UIHandler {
 			deleteButton.addEventListener('click', (event) => {
 				event.stopPropagation();
 				dataHandler.deleteProject(project.title);
+				this.currentProject = dataHandler.getDefaultProject();
 				this.renderProjects();
+				this.renderTodos(this.currentProject);
 			});
 
 			projectElement.addEventListener('click', () => {

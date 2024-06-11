@@ -47,6 +47,10 @@ class DataHandler {
 	}
 
 	deleteProject(projectTitle) {
+		if (projectTitle === this.defaultProject.title) {
+			console.log('Cannot delete the default project');
+			return;
+		}
 		this.projects = this.projects.filter(
 			(project) => project.title !== projectTitle
 		);
