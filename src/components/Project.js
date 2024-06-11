@@ -15,4 +15,8 @@ export default class Project {
 	removeTodoItem(todoItem) {
 		this.todoItems = this.todoItems.filter((item) => item !== todoItem);
 	}
+
+	markForDeletion() {
+		this.isDeleted = true;
+	}
 }

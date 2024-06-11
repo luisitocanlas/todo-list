@@ -94,7 +94,10 @@ class UIHandler {
 			const projectElement = document.createElement('div');
 			projectElement.className = 'card project-card';
 			projectElement.innerHTML = `
-            <h3>${project.title}</h3>
+            <div class="card-header">
+                <h3>${project.title}</h3>
+                <button class="delete-button">&times;</button>
+            </div>
             <p>Items: ${project.getTodoItems().length}</p>
         `;
 
@@ -106,10 +109,19 @@ class UIHandler {
 			});
 
 			projectElement.appendChild(todoList);
+
+			const deleteButton = projectElement.querySelector('.delete-button');
+			deleteButton.addEventListener('click', (event) => {
+				event.stopPropagation();
+				dataHandler.deleteProject(project.title);
+				this.renderProjects();
+			});
+
 			projectElement.addEventListener('click', () => {
 				this.currentProject = project;
 				this.renderTodos(project);
 			});
+
 			projectContainer.appendChild(projectElement);
 		});
 

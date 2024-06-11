@@ -133,8 +133,8 @@ main {
 
 .card-header {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	justify-content: center;
+	align-items: flex-start;
 }
 
 .delete-button {

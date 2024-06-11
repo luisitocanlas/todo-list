@@ -45,6 +45,12 @@ class DataHandler {
 			project.removeTodoItem(todoItem);
 		}
 	}
+
+	deleteProject(projectTitle) {
+		this.projects = this.projects.filter(
+			(project) => project.title !== projectTitle
+		);
+	}
 }
 
 const dataHandler = new DataHandler();
