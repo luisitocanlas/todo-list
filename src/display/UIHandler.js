@@ -1,4 +1,5 @@
 import dataHandler from '../data/dataHandler';
+import { showModal } from './modalHandler';
 
 class UIHandler {
 	constructor(mainContainer) {
@@ -56,12 +57,27 @@ class UIHandler {
                 <input type="checkbox" ${todo.isCompleted ? 'checked' : ''}>
                 Completed
             </label>
+            <button class="edit-button">Edit</button>
         `;
 
 			const deleteButton = todoElement.querySelector('.delete-button');
 			deleteButton.addEventListener('click', () => {
 				dataHandler.deleteTodoItemFromProject(project.title, todo);
 				this.renderTodos(project);
+			});
+
+			const editButton = todoElement.querySelector('.edit-button');
+			editButton.addEventListener('click', (event) => {
+				event.stopPropagation();
+				const editForm = document.querySelector('#edit-todo-form');
+				if (editForm) {
+					editForm.dataset.todoId = todo.id;
+					document.querySelector('#edit-title').value = todo.title;
+					document.querySelector('#edit-description').value = todo.description;
+					document.querySelector('#edit-dueDate').value = todo.dueDate;
+					document.querySelector('#edit-priority').value = todo.priority;
+					showModal('edit-modal-overlay');
+				}
 			});
 
 			todoContainer.appendChild(todoElement);

@@ -55,6 +55,19 @@ class DataHandler {
 			(project) => project.title !== projectTitle
 		);
 	}
+
+	updateTodoItem(id, updatedData) {
+		let todoItem;
+		this.projects.forEach((project) => {
+			project.getTodoItems().forEach((todo) => {
+				if (todo.id === id) {
+					todo.update(updatedData);
+					todoItem = todo;
+				}
+			});
+		});
+		return todoItem;
+	}
 }
 
 const dataHandler = new DataHandler();

@@ -2,9 +2,11 @@ import './styles/style.css';
 import UIHandler from './display/UIHandler';
 import {
 	createTodoModal,
+	createEditTodoModal,
 	createProjectModal,
 	showModal,
 	setupModalHandlers,
+	setupEditModalHandlers,
 	setupProjectModalHandlers,
 } from './display/modalHandler';
 import dataHandler from './data/dataHandler';
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Create the modals for adding a new todo item and project
 	createTodoModal();
+	createEditTodoModal();
 	createProjectModal();
 
 	// Create some default todo items in the default project
@@ -40,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Set up modal handlers with current project context
 	setupModalHandlers(uiHandler);
+	setupEditModalHandlers(uiHandler);
 	setupProjectModalHandlers(uiHandler);
 
 	// Event listener for main container clicks

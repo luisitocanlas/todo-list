@@ -34,6 +34,40 @@ function createTodoModal() {
 	document.body.appendChild(modalOverlay);
 }
 
+function createEditTodoModal() {
+	const modalOverlay = document.createElement('div');
+	modalOverlay.id = 'edit-modal-overlay';
+
+	const modal = document.createElement('div');
+	modal.id = 'edit-modal';
+	modal.innerHTML = `
+      <h2>Edit Todo Item</h2>
+      <form id="edit-todo-form">
+          <label for="edit-title">Title:</label>
+          <input type="text" id="edit-title" name="edit-title" required>
+          
+          <label for="edit-description">Description:</label>
+          <textarea id="edit-description" name="edit-description" required></textarea>
+          
+          <label for="edit-dueDate">Due Date:</label>
+          <input type="date" id="edit-dueDate" name="edit-dueDate" required>
+          
+          <label for="edit-priority">Priority:</label>
+          <select id="edit-priority" name="edit-priority" required>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+          </select>
+          
+          <button type="submit">Save Changes</button>
+          <button type="button" id="cancel-edit-button">Cancel</button>
+      </form>
+  `;
+
+	modalOverlay.appendChild(modal);
+	document.body.appendChild(modalOverlay);
+}
+
 function createProjectModal() {
 	const modalOverlay = document.createElement('div');
 	modalOverlay.id = 'project-modal-overlay';
@@ -94,6 +128,35 @@ function setupModalHandlers(uiHandler) {
 		.addEventListener('click', () => hideModal('modal-overlay'));
 }
 
+function setupEditModalHandlers(uiHandler) {
+	document
+		.querySelector('#edit-todo-form')
+		.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const id = event.target.dataset.todoId;
+			const title = event.target['edit-title'].value;
+			const description = event.target['edit-description'].value;
+			const dueDate = event.target['edit-dueDate'].value;
+			const priority = event.target['edit-priority'].value;
+
+			const todo = dataHandler.updateTodoItem(id, {
+				title,
+				description,
+				dueDate,
+				priority,
+			});
+
+			const currentProject = uiHandler.getCurrentProject();
+			uiHandler.renderTodos(currentProject);
+			hideModal('edit-modal-overlay');
+		});
+
+	document
+		.querySelector('#cancel-edit-button')
+		.addEventListener('click', () => hideModal('edit-modal-overlay'));
+}
+
 function setupProjectModalHandlers(uiHandler) {
 	document
 		.querySelector('#project-form')
@@ -118,8 +181,11 @@ function setupProjectModalHandlers(uiHandler) {
 
 export {
 	createTodoModal,
+	createEditTodoModal,
 	createProjectModal,
 	showModal,
+	hideModal,
 	setupModalHandlers,
+	setupEditModalHandlers,
 	setupProjectModalHandlers,
 };
