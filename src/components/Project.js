@@ -11,4 +11,8 @@ export default class Project {
 	getTodoItems() {
 		return this.todoItems;
 	}
+
+	removeTodoItem(todoItem) {
+		this.todoItems = this.todoItems.filter((item) => item !== todoItem);
+	}
 }

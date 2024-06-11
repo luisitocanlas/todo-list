@@ -38,6 +38,13 @@ class DataHandler {
 			project.addTodoItem(todoItem);
 		}
 	}
+
+	deleteTodoItemFromProject(projectTitle, todoItem) {
+		const project = this.getProjectByTitle(projectTitle);
+		if (project) {
+			project.removeTodoItem(todoItem);
+		}
+	}
 }
 
 const dataHandler = new DataHandler();

@@ -32,7 +32,10 @@ class UIHandler {
 			const todoElement = document.createElement('div');
 			todoElement.className = 'card';
 			todoElement.innerHTML = `
-            <h3>${todo.title}</h3>
+            <div class="card-header">
+                <h3>${todo.title}</h3>
+                <button class="delete-button">&times;</button>
+            </div>
             <p>${todo.description}</p>
             <label>
                 Priority:
@@ -54,6 +57,13 @@ class UIHandler {
                 Completed
             </label>
         `;
+
+			const deleteButton = todoElement.querySelector('.delete-button');
+			deleteButton.addEventListener('click', () => {
+				dataHandler.deleteTodoItemFromProject(project.title, todo);
+				this.renderTodos(project);
+			});
+
 			todoContainer.appendChild(todoElement);
 		});
 

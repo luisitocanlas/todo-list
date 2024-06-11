@@ -6,4 +6,8 @@ export default class TodoItem {
 		this.priority = priority;
 		this.isCompleted = false; // Default value for isCompleted
 	}
+
+	markForDeletion() {
+		this.isDeleted = true;
+	}
 }
